@@ -7,67 +7,19 @@ import Education from "./components/Education.js";
 import Project from "./components/Projects.js";
 import EditToggleBtn from "./components/EditToggleBtn.js";
 
-import ExperienceFactory from "./js/ExperienceFactory.js"; // Factory function for Experience objects
-import EducationFactory from "./js/EducationFactory.js"; // Factory function for education
-import ProjectFactory from "./js/ProjectsFactory.js"; // Factory function for projects
-
-const dummyData = {
-    name: "John Doe",
-    title: "Software Engineer",
-    email: "example@email.com",
-    phone: "123-456-7890",
-    address: "123 Main St, Anytown, USA 12345",
-    experiences: [
-        ExperienceFactory(
-            "Company A",
-            "Software Engineer",
-            "2020-01-01",
-            "2020-12-31",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        ),
-        ExperienceFactory(
-            "Company B",
-            "Manager",
-            "2018-01-01",
-            "2019-12-31",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        ),
-    ],
-    education: [
-        EducationFactory(
-            "School A",
-            "Bachelor of Science",
-            "2014-01-01",
-            "2018-12-31"
-        ),
-        EducationFactory(
-            "School B",
-            "Master of Science",
-            "2018-01-01",
-            "2020-12-31"
-        ),
-    ],
-    projects: [
-        ProjectFactory(
-            "Project A",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "2020-01-01",
-            "2020-12-31",
-            "https://example.com"
-        ),
-        ProjectFactory(
-            "Project B",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "2019-01-01",
-            "2019-12-31",
-            "https://example.com"
-        ),
-    ],
-    skills: "JavaScript, React, Node, Express, MongoDB",
-};
+import dummyCVData from "./dummyCVData.json";
 
 function App() {
-    const [data, setData] = useState(dummyData);
+    const [data, setData] = useState(dummyCVData);
+    const [name, setName] = useState(data.name);
+    // const [title, setTitle] = useState(data.title);
+    // const [email, setEmail] = useState(data.email);
+    // const [phone, setPhone] = useState(data.phone);
+    // const [address, setAddress] = useState(data.address);
+    // const [skills, setSkills] = useState(data.skills);
+    // const [experiences, setExperiences] = useState(data.experiences);
+    // const [education, setEducation] = useState(data.education);
+    // const [projects, setProjects] = useState(data.projects);
     const [editMode, setEditMode] = useState(false);
 
     /**
