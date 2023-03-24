@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
-import Form from "./components/Form.js";
+import EditMode from "./components/EditMode.js";
 import Experience from "./components/Experience.js";
 import Education from "./components/Education.js";
 import Project from "./components/Projects.js";
@@ -116,7 +116,7 @@ function App() {
     if (editMode) {
         return (
             <div className="App">
-                <Form
+                <EditMode
                     data={data}
                     updateData={updateData}
                     toggleEditMode={toggleEditMode}

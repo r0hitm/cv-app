@@ -7,7 +7,7 @@ import ExperienceForm from "./ExperienceForm.js";
 import EducationForm from "./EducationForm.js";
 import ProjectForm from "./ProjectForm.js";
 
-export default function Form({ data, updateData, toggleEditMode, expDelete, eduDelete, projDelete }) {
+export default function EditMode({ data, updateData, toggleEditMode, expDelete, eduDelete, projDelete }) {
     const [experiences, setExperiences] = useState(data.experiences);
     const [education, setEducation] = useState(data.education);
     const [projects, setProjects] = useState(data.projects);
