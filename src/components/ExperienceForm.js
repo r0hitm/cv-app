@@ -1,9 +1,9 @@
-export default function EducationOverlay({ onAdd }) {
+export default function ExperienceForm({ onAdd }) {
     function handleSubmit() {
-        const form = document.getElementById("education-form");
+        const form = document.getElementById("experience-form");
         const data = {
-            school: form.school.value,
-            degree: form.degree.value,
+            company: form.company.value,
+            title: form.title.value,
             startDate: form.startDate.value,
             endDate: form.endDate.value,
             description: form.description.value,
@@ -13,20 +13,20 @@ export default function EducationOverlay({ onAdd }) {
     }
 
     return (
-        <form className="list-form" id="education-form">
+        <form className="list-form" id="experience-form">
             <div className="form-field">
                 <input
                     type="text"
-                    placeholder="School"
-                    name="school"
+                    placeholder="Company"
+                    name="company"
                     autoFocus
                 />
             </div>
             <div className="form-field">
                 <input
                     type="text"
-                    placeholder="Degree"
-                    name="degree"
+                    placeholder="Title"
+                    name="title"
                 />
             </div>
             <div className="form-field">
@@ -43,6 +43,12 @@ export default function EducationOverlay({ onAdd }) {
                     type="date"
                     id="endDate"
                     name="endDate"
+                />
+            </div>
+            <div className="form-field">
+                <textarea
+                    placeholder="Description"
+                    name="description"
                 />
             </div>
             <button type="button" onClick={handleSubmit}>Add</button>

@@ -1,32 +1,31 @@
-export default function ExperienceOverlay({ onAdd }) {
+export default function EducationForm({ onAdd }) {
     function handleSubmit() {
-        const form = document.getElementById("experience-form");
+        const form = document.getElementById("education-form");
         const data = {
-            company: form.company.value,
-            title: form.title.value,
+            school: form.school.value,
+            degree: form.degree.value,
             startDate: form.startDate.value,
             endDate: form.endDate.value,
-            description: form.description.value,
         };
         form.reset();
         onAdd(data);
     }
 
     return (
-        <form className="list-form" id="experience-form">
+        <form className="list-form" id="education-form">
             <div className="form-field">
                 <input
                     type="text"
-                    placeholder="Company"
-                    name="company"
+                    placeholder="School"
+                    name="school"
                     autoFocus
                 />
             </div>
             <div className="form-field">
                 <input
                     type="text"
-                    placeholder="Title"
-                    name="title"
+                    placeholder="Degree"
+                    name="degree"
                 />
             </div>
             <div className="form-field">
@@ -43,12 +42,6 @@ export default function ExperienceOverlay({ onAdd }) {
                     type="date"
                     id="endDate"
                     name="endDate"
-                />
-            </div>
-            <div className="form-field">
-                <textarea
-                    placeholder="Description"
-                    name="description"
                 />
             </div>
             <button type="button" onClick={handleSubmit}>Add</button>

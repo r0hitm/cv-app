@@ -3,9 +3,9 @@ import { useState } from "react";
 import Experience from "./Experience.js";
 import Education from "./Education.js";
 import Project from "./Projects.js";
-import ExperienceOverlay from "./ExperienceOverlay.js";
-import EducationOverlay from "./EducationOverlay.js";
-import ProjectOverlay from "./ProjectOverlay.js";
+import ExperienceForm from "./ExperienceForm.js";
+import EducationForm from "./EducationForm.js";
+import ProjectForm from "./ProjectForm.js";
 
 export default function Form({ data, updateData, toggleEditMode }) {
     const [experiences, setExperiences] = useState(data.experiences);
@@ -106,19 +106,19 @@ export default function Form({ data, updateData, toggleEditMode }) {
             <div className="form-field">
                 <label>Experience</label>
                 <Experience data={experiences} />
-                <ExperienceOverlay onAdd={addExperience} />
+                <ExperienceForm onAdd={addExperience} />
             </div>
 
             <div className="form-field">
                 <label>Education</label>
                 <Education data={education} />
-                <EducationOverlay onAdd={addEducation} />
+                <EducationForm onAdd={addEducation} />
             </div>
 
             <div className="form-field">
                 <label>Projects</label>
                 <Project data={projects} />
-                <ProjectOverlay onAdd={addProject} />
+                <ProjectForm onAdd={addProject} />
             </div>
 
             <div className="form-field">

@@ -1,4 +1,4 @@
-export default function ProjectOverlay({onAdd}) {
+export default function ProjectForm({onAdd}) {
     function handleSubmit() {
         const form = document.getElementById("project-form");
         const data = {
