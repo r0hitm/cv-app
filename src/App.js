@@ -9,7 +9,8 @@ const dummyData = {
     email: "example@email.com",
     phone: "123-456-7890",
     address: "123 Main St, Anytown, USA 12345",
-    // Add more fields later: experience, education, projects, skills
+    // Add more fields later: experience, education, projects
+    skills: "JavaScript, React, Node, Express, MongoDB",
 };
 
 function App() {
@@ -88,7 +89,7 @@ function App() {
 
                     <section className="cv-section">
                         <h3>Skills</h3>
-                        <p>TODO</p>
+                        <p>{data.skills}</p>
                     </section>
 
                     <button onClick={toggleEditMode}>Edit</button>

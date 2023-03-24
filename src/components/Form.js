@@ -10,19 +10,32 @@ export default function Form({ data, updateData, toggleEditMode }) {
         // const oldData = data;
         updateData(newData);
         toggleEditMode();
-        console.log("handleSubmit() called", {data, newData});
+        console.log("handleSubmit() called", { data, newData });
     }
 
     return (
         <form id="cv-edit-form" onSubmit={handleSubmit}>
             <div className="form-field">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" defaultValue={data.name} />
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    defaultValue={data.name}
+                    autoFocus
+                    tabIndex={1}
+                />
             </div>
 
             <div className="form-field">
                 <label htmlFor="title">Title</label>
-                <input type="text" id="title" name="title" defaultValue={data.title} />
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    defaultValue={data.title}
+                    tabIndex={2}
+                />
             </div>
 
             <div className="form-field">
@@ -32,12 +45,19 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     id="email"
                     name="email"
                     defaultValue={data.email}
+                    tabIndex={3}
                 />
             </div>
 
             <div className="form-field">
                 <label htmlFor="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" defaultValue={data.phone} />
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    defaultValue={data.phone}
+                    tabIndex={4}
+                />
             </div>
 
             <div className="form-field">
@@ -47,6 +67,17 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     id="address"
                     name="address"
                     defaultValue={data.address}
+                    tabIndex={5}
+                />
+            </div>
+
+            <div className="form-field">
+                <label htmlFor="skills">Skills (separate with commas)</label>
+                <textarea
+                    id="skills"
+                    name="skills"
+                    defaultValue={data.skills}
+                    // tabIndex={6}
                 />
             </div>
 
