@@ -68,6 +68,7 @@ function App() {
     if (editMode) {
         return (
             <div className="App">
+                <TopMsg />
                 <EditMode
                     personalInfo={personalInfo}
                     updatePersonalInfo={updatePersonalInfo}
@@ -90,6 +91,7 @@ function App() {
     } else {
         return (
             <div className="App">
+                <TopMsg />
                 <div className="cv-view">
                     <section className="cv-section">
                         <h1>{personalInfo.name}</h1>
@@ -149,6 +151,15 @@ function App() {
             </div>
         );
     }
+}
+
+function TopMsg() {
+    return (
+        <div className="top-msg">
+            <p>Build Your CV</p>
+            <p>View on <a href="https://github.com/r0hitm/cv-app">GitHub</a></p>
+        </div>
+    );
 }
 
 export default App;

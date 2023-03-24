@@ -23,7 +23,7 @@ body {
     margin: 0 auto;
 }
 
-.App::before {
+.top-msg {
     content: "Build your CV";
     display: block;
     text-align: center;
