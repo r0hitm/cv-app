@@ -78,7 +78,8 @@ body {
     color: #00368e;
 }
 
-.cv-view button {
+button.toggleEdit {
+    margin: 1.5rem auto;
     width: 100%;
     padding: 0.5rem;
     font-size: 1.2rem;

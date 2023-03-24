@@ -5,10 +5,11 @@ import Form from "./components/Form.js";
 import Experience from "./components/Experience.js";
 import Education from "./components/Education.js";
 import Project from "./components/Projects.js";
+import EditToggleBtn from "./components/EditToggleBtn.js";
 
-import ExperienceFactory from "./js/ExperienceFactory.js";  // Factory function for Experience objects
-import EducationFactory from "./js/EducationFactory.js";  // Factory function for education
-import ProjectFactory from "./js/ProjectsFactory.js";  // Factory function for projects
+import ExperienceFactory from "./js/ExperienceFactory.js"; // Factory function for Experience objects
+import EducationFactory from "./js/EducationFactory.js"; // Factory function for education
+import ProjectFactory from "./js/ProjectsFactory.js"; // Factory function for projects
 
 const dummyData = {
     name: "John Doe",
@@ -102,6 +103,10 @@ function App() {
                     updateData={updateData}
                     toggleEditMode={toggleEditMode}
                 />
+                <EditToggleBtn
+                    editMode={editMode}
+                    toggleEditMode={toggleEditMode}
+                />
             </div>
         );
     } else {
@@ -143,7 +148,10 @@ function App() {
                         <p>{data.skills}</p>
                     </section>
 
-                    <button onClick={toggleEditMode}>Edit</button>
+                    <EditToggleBtn
+                        editMode={editMode}
+                        toggleEditMode={toggleEditMode}
+                    />
                 </div>
             </div>
         );
