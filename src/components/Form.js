@@ -45,7 +45,7 @@ export default function Form({ data, updateData, toggleEditMode }) {
                 <input
                     type="address"
                     id="address"
-                    name="adress"
+                    name="address"
                     defaultValue={data.address}
                 />
             </div>
