@@ -26,7 +26,6 @@ export default function EducationForm({ onAdd }) {
                     type="text"
                     placeholder="School"
                     name="school"
-                    autoFocus
                 />
             </div>
             <div className="form-field">

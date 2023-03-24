@@ -32,7 +32,6 @@ export default function ExperienceForm({ onAdd }) {
                     type="text"
                     placeholder="Company"
                     name="company"
-                    autoFocus
                 />
             </div>
             <div className="form-field">

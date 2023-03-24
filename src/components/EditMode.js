@@ -52,7 +52,6 @@ export default function EditMode({
                         id="name"
                         name="name"
                         defaultValue={personalInfo.name}
-                        autoFocus
                     />
                 </div>
 

@@ -17,7 +17,7 @@ export default function ProjectForm({ onAdd }) {
     return (
         <form className="list-form" id="project-form">
             <div className="form-field">
-                <input type="text" placeholder="Title" name="title" autoFocus />
+                <input type="text" placeholder="Title" name="title" />
             </div>
             <div className="form-field">
                 <textarea placeholder="Description" name="description" />
