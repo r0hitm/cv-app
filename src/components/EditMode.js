@@ -38,8 +38,8 @@ export default function EditMode({
 
         updatePersonalInfo(data);
 
-        // alert("Personal info saved!");
-        console.log("Personal info saved!"); // For DEBUG
+        alert("Personal info saved!");
+        // console.log("Personal info saved!"); // For DEBUG
     }
 
     return (

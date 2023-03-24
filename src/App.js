@@ -23,19 +23,16 @@ function App() {
     function updateExperiences(newExperience) {
         const newExperiences = [...experiences, newExperience];
         setExperiences(newExperiences);
-        // updateData({ ...data, experiences: newExperiences });
     }
 
     function updateEducation(edu) {
         const newEducation = [...education, edu];
         setEducation(newEducation);
-        // updateData({ ...data, education: newEducation });
     }
 
     function updateProjects(newProject) {
         const newProjects = [...projects, newProject];
         setProjects(newProjects);
-        // updateData({ ...data, projects: newProjects });
     }
 
     function removeExperience(index) {
