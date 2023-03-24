@@ -8,4 +8,4 @@ In non-edit mode, you can view the CV. The CV is responsive, so it will look goo
 
 Inspired by [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-cv-application).
 
-👉 [Live Demo](#)
+👉 [Live Demo](https://r0hitm.github.io/cv-app)
