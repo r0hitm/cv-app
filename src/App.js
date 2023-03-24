@@ -10,68 +10,68 @@ import EditToggleBtn from "./components/EditToggleBtn.js";
 import dummyCVData from "./dummyCVData.json";
 
 function App() {
-    const [data, setData] = useState(dummyCVData);
-    const [name, setName] = useState(data.name);
-    // const [title, setTitle] = useState(data.title);
-    // const [email, setEmail] = useState(data.email);
-    // const [phone, setPhone] = useState(data.phone);
-    // const [address, setAddress] = useState(data.address);
-    // const [skills, setSkills] = useState(data.skills);
-    // const [experiences, setExperiences] = useState(data.experiences);
-    // const [education, setEducation] = useState(data.education);
-    // const [projects, setProjects] = useState(data.projects);
+    const [personalInfo, setPersonalData] = useState(dummyCVData.personalInfo);
+    const [experiences, setExperiences] = useState(dummyCVData.experiences);
+    const [education, setEducation] = useState(dummyCVData.education);
+    const [projects, setProjects] = useState(dummyCVData.projects);
     const [editMode, setEditMode] = useState(false);
 
-    /**
-     * Update CV data
-     */
-    function updateData(newData) {
-        const oldData = data;
-        setData(newData);
-        console.log("updateData() called", { oldData, newData });
+    function updatePersonalInfo(newData) {
+        setPersonalData(newData);
     }
 
-    /**
-     * Edit mode toggle
-     * @param {void}
-     * @returns {void}
-     */
-    function toggleEditMode() {
-        const oldEditMode = editMode;
-        const newEditMode = !editMode;
-        setEditMode(newEditMode);
-        console.log(
-            "toggleEditMode() called and editMode is now: ",
-            newEditMode
-        );
-        console.log("oldEditMode was: ", oldEditMode);
+    function updateExperiences(newExperience) {
+        const newExperiences = [...experiences, newExperience];
+        setExperiences(newExperiences);
+        // updateData({ ...data, experiences: newExperiences });
+    }
+
+    function updateEducation(edu) {
+        const newEducation = [...education, edu];
+        setEducation(newEducation);
+        // updateData({ ...data, education: newEducation });
+    }
+
+    function updateProjects(newProject) {
+        const newProjects = [...projects, newProject];
+        setProjects(newProjects);
+        // updateData({ ...data, projects: newProjects });
     }
 
     function removeExperience(index) {
-        const newData = { ...data };
-        newData.experiences.splice(index, 1);
-        setData(newData);
+        const newData = [...experiences];
+        newData.splice(index, 1);
+        setExperiences(newData);
     }
 
     function removeEducation(index) {
-        const newData = { ...data };
-        newData.education.splice(index, 1);
-        setData(newData);
+        const newData = [...education];
+        newData.splice(index, 1);
+        setEducation(newData);
     }
 
     function removeProject(index) {
-        const newData = { ...data };
-        newData.projects.splice(index, 1);
-        setData(newData);
+        const newData = [...projects];
+        newData.splice(index, 1);
+        setProjects(newData);
+    }
+
+    function toggleEditMode() {
+        setEditMode(!editMode);
     }
 
     if (editMode) {
         return (
             <div className="App">
                 <EditMode
-                    data={data}
-                    updateData={updateData}
-                    toggleEditMode={toggleEditMode}
+                    personalInfo={personalInfo}
+                    updatePersonalInfo={updatePersonalInfo}
+                    experiences={experiences}
+                    updateExperiences={updateExperiences}
+                    education={education}
+                    updateEducation={updateEducation}
+                    projects={projects}
+                    updateProjects={updateProjects}
                     eduDelete={removeEducation}
                     expDelete={removeExperience}
                     projDelete={removeProject}
@@ -87,38 +87,38 @@ function App() {
             <div className="App">
                 <div className="cv-view">
                     <section className="cv-section">
-                        <h1>{data.name}</h1>
-                        <h2>{data.title}</h2>
+                        <h1>{personalInfo.name}</h1>
+                        <h2>{personalInfo.title}</h2>
                     </section>
 
                     <section className="cv-section">
-                        <address>{data.address}</address>
-                        <a className="email" href={`mailto:${data.email}`}>
-                            {data.email}
+                        <address>{personalInfo.address}</address>
+                        <a className="email" href={`mailto:${personalInfo.email}`}>
+                            {personalInfo.email}
                         </a>
-                        <a className="phone" href={`tel:${data.phone}`}>
-                            {data.phone}
+                        <a className="phone" href={`tel:${personalInfo.phone}`}>
+                            {personalInfo.phone}
                         </a>
                     </section>
 
                     <section className="cv-section">
                         <h3>Experience</h3>
-                        <Experience data={data.experiences} />
+                        <Experience data={experiences} />
                     </section>
 
                     <section className="cv-section">
                         <h3>Education</h3>
-                        <Education data={data.education} />
+                        <Education data={education} />
                     </section>
 
                     <section className="cv-section">
                         <h3>Projects</h3>
-                        <Project data={data.projects} />
+                        <Project data={projects} />
                     </section>
 
                     <section className="cv-section">
                         <h3>Skills</h3>
-                        <p>{data.skills}</p>
+                        <p>{personalInfo.skills}</p>
                     </section>
 
                     <EditToggleBtn

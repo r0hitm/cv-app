@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Experience from "./Experience.js";
 import Education from "./Education.js";
 import Project from "./Projects.js";
@@ -7,62 +5,48 @@ import ExperienceForm from "./ExperienceForm.js";
 import EducationForm from "./EducationForm.js";
 import ProjectForm from "./ProjectForm.js";
 
-export default function EditMode({ data, updateData, toggleEditMode, expDelete, eduDelete, projDelete }) {
-    const [experiences, setExperiences] = useState(data.experiences);
-    const [education, setEducation] = useState(data.education);
-    const [projects, setProjects] = useState(data.projects);
-
-    function handleSubmit(event) {
+export default function EditMode({
+    personalInfo,
+    updatePersonalInfo,
+    experiences,
+    updateExperiences,
+    education,
+    updateEducation,
+    projects,
+    updateProjects,
+    expDelete,
+    eduDelete,
+    projDelete,
+}) {
+    function savePersonalInfo(event) {
         event.preventDefault();
         // get the form data and create an object to be used by updateData
         const form = event.target;
-        const newData = {
+        updatePersonalInfo({
+            ...personalInfo,
             name: form.name.value,
             title: form.title.value,
             email: form.email.value,
             phone: form.phone.value,
             address: form.address.value,
             skills: form.skills.value,
-            // experiences: experiences,
-            // education: education,
-            // projects: projects,
-        };
+        });
 
-        updateData({...data, ...newData});
-        // toggleEditMode();
-        // console.log("handleSubmit() called", { data, newData });
-    }
-
-    function addExperience(newExperience) {
-        const newExperiences = [...experiences, newExperience];
-        setExperiences(newExperiences);
-        updateData({ ...data, experiences: newExperiences });
-    }
-
-    function addEducation(edu) {
-        const newEducation = [...education, edu];
-        setEducation(newEducation);
-        updateData({ ...data, education: newEducation });
-    }
-
-    function addProject(newProject) {
-        const newProjects = [...projects, newProject];
-        setProjects(newProjects);
-        updateData({ ...data, projects: newProjects });
+        // alert("Personal info saved!");
+        console.log("Personal info saved!"); // For DEBUG
     }
 
     return (
         <>
-            <form id="cv-edit-form" onSubmit={handleSubmit}>
+            <form onSubmit={savePersonalInfo}>
                 <div className="form-field">
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
                         id="name"
                         name="name"
-                        defaultValue={data.name}
+                        defaultValue={personalInfo.name}
                         autoFocus
-                        tabIndex={1}
                     />
                 </div>
 
@@ -72,8 +56,7 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
                         type="text"
                         id="title"
                         name="title"
-                        defaultValue={data.title}
-                        tabIndex={2}
+                        defaultValue={personalInfo.title}
                     />
                 </div>
 
@@ -83,8 +66,7 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
                         type="address"
                         id="address"
                         name="address"
-                        defaultValue={data.address}
-                        tabIndex={5}
+                        defaultValue={personalInfo.address}
                     />
                 </div>
 
@@ -94,8 +76,7 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
                         type="email"
                         id="email"
                         name="email"
-                        defaultValue={data.email}
-                        tabIndex={3}
+                        defaultValue={personalInfo.email}
                     />
                 </div>
 
@@ -105,8 +86,7 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
                         type="tel"
                         id="phone"
                         name="phone"
-                        defaultValue={data.phone}
-                        tabIndex={4}
+                        defaultValue={personalInfo.phone}
                     />
                 </div>
 
@@ -117,7 +97,7 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
                     <textarea
                         id="skills"
                         name="skills"
-                        defaultValue={data.skills}
+                        defaultValue={personalInfo.skills}
                     />
                 </div>
 
@@ -129,19 +109,19 @@ export default function EditMode({ data, updateData, toggleEditMode, expDelete, 
             <div className="form-field border">
                 <h3>Experience</h3>
                 <Experience data={experiences} handleDelete={expDelete} />
-                <ExperienceForm onAdd={addExperience} />
+                <ExperienceForm onAdd={updateExperiences} />
             </div>
 
             <div className="form-field border">
                 <h3>Education</h3>
                 <Education data={education} handleDelete={eduDelete} />
-                <EducationForm onAdd={addEducation} />
+                <EducationForm onAdd={updateEducation} />
             </div>
 
             <div className="form-field border">
                 <h3>Projects</h3>
                 <Project data={projects} handleDelete={projDelete} />
-                <ProjectForm onAdd={addProject} />
+                <ProjectForm onAdd={updateProjects} />
             </div>
         </>
     );
