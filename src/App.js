@@ -57,7 +57,15 @@ function App() {
     }
 
     function toggleEditMode() {
-        setEditMode(!editMode);
+        if (editMode) {
+            const confirm = window.confirm(
+                "Are you sure you want to exit edit mode?"
+            );
+            if (confirm) setEditMode(false);
+        } else {
+            // go to edit mode
+            setEditMode(true);
+        }
     }
 
     if (editMode) {
