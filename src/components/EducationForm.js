@@ -7,6 +7,14 @@ export default function EducationForm({ onAdd }) {
             startDate: form.startDate.value,
             endDate: form.endDate.value,
         };
+        if (data.school === "" || data.degree === "") {
+            alert("Please at least fill in the school and degree fields.");
+            return;
+        }
+        if (data.startDate > data.endDate) {
+            alert("Please correct the date range.");
+            return;
+        }
         form.reset();
         onAdd(data);
     }
@@ -22,29 +30,19 @@ export default function EducationForm({ onAdd }) {
                 />
             </div>
             <div className="form-field">
-                <input
-                    type="text"
-                    placeholder="Degree"
-                    name="degree"
-                />
+                <input type="text" placeholder="Degree" name="degree" />
             </div>
             <div className="form-field">
                 <label htmlFor="startDate">Start Date</label>
-                <input
-                    type="date"
-                    id="startDate"
-                    name="startDate"
-                />
+                <input type="date" id="startDate" name="startDate" />
             </div>
             <div className="form-field">
                 <label htmlFor="endDate">End Date</label>
-                <input
-                    type="date"
-                    id="endDate"
-                    name="endDate"
-                />
+                <input type="date" id="endDate" name="endDate" />
             </div>
-            <button type="button" onClick={handleSubmit}>Add</button>
+            <button type="button" onClick={handleSubmit}>
+                Add
+            </button>
         </form>
     );
 }

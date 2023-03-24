@@ -22,7 +22,7 @@ export default function EditMode({
         event.preventDefault();
         // get the form data and create an object to be used by updateData
         const form = event.target;
-        updatePersonalInfo({
+        const data = {
             ...personalInfo,
             name: form.name.value,
             title: form.title.value,
@@ -30,7 +30,13 @@ export default function EditMode({
             phone: form.phone.value,
             address: form.address.value,
             skills: form.skills.value,
-        });
+        };
+        if (data.name === "") {
+            alert("Please at least fill in the name field.");
+            return;
+        }
+
+        updatePersonalInfo(data);
 
         // alert("Personal info saved!");
         console.log("Personal info saved!"); // For DEBUG

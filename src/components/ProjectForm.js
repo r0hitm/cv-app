@@ -1,4 +1,4 @@
-export default function ProjectForm({onAdd}) {
+export default function ProjectForm({ onAdd }) {
     function handleSubmit() {
         const form = document.getElementById("project-form");
         const data = {
@@ -6,6 +6,10 @@ export default function ProjectForm({onAdd}) {
             description: form.description.value,
             url: form.url.value,
         };
+        if (data.title === "") {
+            alert("Please at least fill in the title field.");
+            return;
+        }
         form.reset();
         onAdd(data);
     }
@@ -13,27 +17,17 @@ export default function ProjectForm({onAdd}) {
     return (
         <form className="list-form" id="project-form">
             <div className="form-field">
-                <input
-                    type="text"
-                    placeholder="Title"
-                    name="title"
-                    autoFocus
-                />
+                <input type="text" placeholder="Title" name="title" autoFocus />
             </div>
             <div className="form-field">
-                <textarea
-                    placeholder="Description"
-                    name="description"
-                />
+                <textarea placeholder="Description" name="description" />
             </div>
             <div className="form-field">
-                <input
-                    type="text"
-                    placeholder="URL"
-                    name="url"
-                />
+                <input type="text" placeholder="URL" name="url" />
             </div>
-            <button type="button" onClick={handleSubmit}>Add</button>
+            <button type="button" onClick={handleSubmit}>
+                Add
+            </button>
         </form>
     );
 }
