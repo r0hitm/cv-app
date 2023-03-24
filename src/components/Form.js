@@ -23,26 +23,32 @@ export default function Form({ data, updateData, toggleEditMode, expDelete, eduD
             phone: form.phone.value,
             address: form.address.value,
             skills: form.skills.value,
-            experiences: experiences,
-            education: education,
-            projects: projects,
+            // experiences: experiences,
+            // education: education,
+            // projects: projects,
         };
 
-        updateData(newData);
-        toggleEditMode();
-        console.log("handleSubmit() called", { data, newData });
+        updateData({...data, ...newData});
+        // toggleEditMode();
+        // console.log("handleSubmit() called", { data, newData });
     }
 
     function addExperience(newExperience) {
-        setExperiences([...experiences, newExperience]);
+        const newExperiences = [...experiences, newExperience];
+        setExperiences(newExperiences);
+        updateData({ ...data, experiences: newExperiences });
     }
 
-    function addEducation(newEducation) {
-        setEducation([...education, newEducation]);
+    function addEducation(edu) {
+        const newEducation = [...education, edu];
+        setEducation(newEducation);
+        updateData({ ...data, education: newEducation });
     }
 
     function addProject(newProject) {
-        setProjects([...projects, newProject]);
+        const newProjects = [...projects, newProject];
+        setProjects(newProjects);
+        updateData({ ...data, projects: newProjects });
     }
 
     return (
