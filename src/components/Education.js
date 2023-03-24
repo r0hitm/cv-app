@@ -3,7 +3,7 @@ export default function Education({ data }) {
         <>
             {data.map((education, index) => {
                 return (
-                    <div key={index}>
+                    <div className="list-item" key={index}>
                         <h4>{education.school}</h4>
                         <h5>{education.degree}</h5>
                         <p>

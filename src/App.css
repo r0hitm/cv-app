@@ -142,6 +142,31 @@ body {
     cursor: pointer;
 }
 
+.list-item {
+    border-bottom: 1px solid #ccc;
+}
+
+.list-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    /* height: 100vh; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.list-form .form-field {
+    margin-bottom: 0rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.list-form button {
+    scale: 0.8;
+}
+
 /* hide buttons and .App::before when page is printed */
 @media print {
     .App::before {

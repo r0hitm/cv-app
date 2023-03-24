@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+import Experience from "./Experience.js";
+import Education from "./Education.js";
+import Project from "./Projects.js";
+import ExperienceOverlay from "./ExperienceOverlay.js";
+import EducationOverlay from "./EducationOverlay.js";
+import ProjectOverlay from "./ProjectOverlay.js";
+
 export default function Form({ data, updateData, toggleEditMode }) {
     const [experiences, setExperiences] = useState(data.experiences);
     const [education, setEducation] = useState(data.education);
@@ -24,6 +31,18 @@ export default function Form({ data, updateData, toggleEditMode }) {
         updateData(newData);
         toggleEditMode();
         console.log("handleSubmit() called", { data, newData });
+    }
+
+    function addExperience(newExperience) {
+        setExperiences([...experiences, newExperience]);
+    }
+
+    function addEducation(newEducation) {
+        setEducation([...education, newEducation]);
+    }
+
+    function addProject(newProject) {
+        setProjects([...projects, newProject]);
     }
 
     return (
@@ -82,6 +101,24 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     defaultValue={data.phone}
                     tabIndex={4}
                 />
+            </div>
+
+            <div className="form-field">
+                <label>Experience</label>
+                <Experience data={experiences} />
+                <ExperienceOverlay onAdd={addExperience} />
+            </div>
+
+            <div className="form-field">
+                <label>Education</label>
+                <Education data={education} />
+                <EducationOverlay onAdd={addEducation} />
+            </div>
+
+            <div className="form-field">
+                <label>Projects</label>
+                <Project data={projects} />
+                <ProjectOverlay onAdd={addProject} />
             </div>
 
             <div className="form-field">

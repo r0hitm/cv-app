@@ -3,7 +3,7 @@ export default function Experience({ data }) {
         <>
             {data.map((experience, index) => {
                 return (
-                    <div key={index}>
+                    <div className="list-item" key={index}>
                         <h4>{experience.company}</h4>
                         <h5>{experience.title}</h5>
                         <p>
