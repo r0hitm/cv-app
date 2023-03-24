@@ -100,7 +100,6 @@ function App() {
                 <Form
                     data={data}
                     updateData={updateData}
-                    editMode={editMode}
                     toggleEditMode={toggleEditMode}
                 />
             </div>

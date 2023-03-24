@@ -2,11 +2,26 @@ export default function Form({ data, updateData, toggleEditMode }) {
     function handleSubmit(event) {
         event.preventDefault();
         // get the form data and create an object to be used by updateData
-        const formData = new FormData(event.target);
-        const newData = {};
-        for (let [key, value] of formData.entries()) {
-            newData[key] = value;
-        }
+        const form = event.target;
+        const newData = {
+            name: form.name.value,
+            title: form.title.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            address: form.address.value,
+            skills: form.skills.value,
+        };
+        // For now, experience, education, and projects are not editable
+        // so we'll just copy the existing data into the newData object
+        newData.experiences = data.experiences;
+        newData.education = data.education;
+        newData.projects = data.projects;
+        
+        // const formData = new FormData(event.target);
+        // const newData = {};
+        // for (let [key, value] of formData.entries()) {
+        //     newData[key] = value;
+        // }
         // const oldData = data;
         updateData(newData);
         toggleEditMode();
