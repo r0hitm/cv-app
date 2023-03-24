@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #333;
@@ -59,26 +59,17 @@ body {
     font-style: normal;
 }
 
-.cv-section address::before {
-    content: "Address: ";
-}
-
-.cv-section email {
+.cv-section .email {
     font-style: normal;
+    text-decoration: none;
+    color: #00368e;
 }
 
-.cv-section email::before {
-    content: "Email: ";
-}
-
-.cv-section phone {
+.cv-section .phone {
     font-style: normal;
+    text-decoration: none;
+    color: #00368e;
 }
-
-.cv-section phone::before {
-    content: "Phone: ";
-}
-
 
 .cv-view button {
     width: 100%;

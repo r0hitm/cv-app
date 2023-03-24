@@ -1,14 +1,28 @@
 export default function Form({ data, updateData, toggleEditMode }) {
+    function handleSubmit(event) {
+        event.preventDefault();
+        // get the form data and create an object to be used by updateData
+        const formData = new FormData(event.target);
+        const newData = {};
+        for (let [key, value] of formData.entries()) {
+            newData[key] = value;
+        }
+        // const oldData = data;
+        updateData(newData);
+        toggleEditMode();
+        console.log("handleSubmit() called", {data, newData});
+    }
+
     return (
         <form id="cv-edit-form" onSubmit={handleSubmit}>
             <div className="form-field">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" value={data.name} />
+                <input type="text" id="name" name="name" defaultValue={data.name} />
             </div>
 
             <div className="form-field">
                 <label htmlFor="title">Title</label>
-                <input type="text" id="title" name="title" value={data.title} />
+                <input type="text" id="title" name="title" defaultValue={data.title} />
             </div>
 
             <div className="form-field">
@@ -17,13 +31,13 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     type="email"
                     id="email"
                     name="email"
-                    value={data.email}
+                    defaultValue={data.email}
                 />
             </div>
 
             <div className="form-field">
                 <label htmlFor="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" value={data.phone} />
+                <input type="tel" id="phone" name="phone" defaultValue={data.phone} />
             </div>
 
             <div className="form-field">
@@ -32,7 +46,7 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     type="address"
                     id="address"
                     name="adress"
-                    value={data.address}
+                    defaultValue={data.address}
                 />
             </div>
 
@@ -41,9 +55,4 @@ export default function Form({ data, updateData, toggleEditMode }) {
             </div>
         </form>
     );
-}
-
-function handleSubmit(event) {
-    event.preventDefault();
-    console.log("handleSubmit() called");
 }

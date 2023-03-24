@@ -17,18 +17,28 @@ function App() {
     const [editMode, setEditMode] = useState(false);
 
     /**
-     * TODO: Add a function that takes an object and updates the data state
+     * Update CV data
      */
-    function updateData() {
-        console.log("updateData() called");
+    function updateData(newData) {
+        const oldData = data;
+        setData(newData);
+        console.log("updateData() called", { oldData, newData });
     }
 
     /**
-     * TODO: Add a function that toggles the editMode state
-     * Hint: use the setEditMode function
+     * Edit mode toggle
+     * @param {void}
+     * @returns {void}
      */
     function toggleEditMode() {
-        console.log("toggleEditMode() called");
+        const oldEditMode = editMode;
+        const newEditMode = !editMode;
+        setEditMode(newEditMode);
+        console.log(
+            "toggleEditMode() called and editMode is now: ",
+            newEditMode
+        );
+        console.log("oldEditMode was: ", oldEditMode);
     }
 
     if (editMode) {
@@ -53,8 +63,12 @@ function App() {
 
                     <section className="cv-section">
                         <address>{data.address}</address>
-                        <email>{data.email}</email>
-                        <phone>{data.phone}</phone>
+                        <a className="email" href={`mailto:${data.email}`}>
+                            {data.email}
+                        </a>
+                        <a className="phone" href={`tel:${data.phone}`}>
+                            {data.phone}
+                        </a>
                     </section>
 
                     <section className="cv-section">
@@ -77,9 +91,7 @@ function App() {
                         <p>TODO</p>
                     </section>
 
-                    {/* <section className="cv-section"> */}
                     <button onClick={toggleEditMode}>Edit</button>
-                    {/* </section> */}
                 </div>
             </div>
         );
