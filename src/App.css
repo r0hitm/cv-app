@@ -23,6 +23,13 @@ body {
     margin: 0 auto;
 }
 
+.App::before {
+    content: "Build your CV";
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
 .cv-view {
     display: flex;
     flex-direction: column;
@@ -133,4 +140,14 @@ body {
     background: #333;
     color: #fff;
     cursor: pointer;
+}
+
+/* hide buttons and .App::before when page is printed */
+@media print {
+    .App::before {
+        display: none;
+    }
+    button {
+        display: none;
+    }
 }
