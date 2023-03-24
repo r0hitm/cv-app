@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 export default function Form({ data, updateData, toggleEditMode }) {
+    const [experiences, setExperiences] = useState(data.experiences);
+    const [education, setEducation] = useState(data.education);
+    const [projects, setProjects] = useState(data.projects);
+
     function handleSubmit(event) {
         event.preventDefault();
         // get the form data and create an object to be used by updateData
@@ -10,19 +16,11 @@ export default function Form({ data, updateData, toggleEditMode }) {
             phone: form.phone.value,
             address: form.address.value,
             skills: form.skills.value,
+            experiences: experiences,
+            education: education,
+            projects: projects,
         };
-        // For now, experience, education, and projects are not editable
-        // so we'll just copy the existing data into the newData object
-        newData.experiences = data.experiences;
-        newData.education = data.education;
-        newData.projects = data.projects;
-        
-        // const formData = new FormData(event.target);
-        // const newData = {};
-        // for (let [key, value] of formData.entries()) {
-        //     newData[key] = value;
-        // }
-        // const oldData = data;
+
         updateData(newData);
         toggleEditMode();
         console.log("handleSubmit() called", { data, newData });
@@ -54,6 +52,17 @@ export default function Form({ data, updateData, toggleEditMode }) {
             </div>
 
             <div className="form-field">
+                <label htmlFor="address">Address</label>
+                <input
+                    type="address"
+                    id="address"
+                    name="address"
+                    defaultValue={data.address}
+                    tabIndex={5}
+                />
+            </div>
+
+            <div className="form-field">
                 <label htmlFor="email">Email</label>
                 <input
                     type="email"
@@ -72,17 +81,6 @@ export default function Form({ data, updateData, toggleEditMode }) {
                     name="phone"
                     defaultValue={data.phone}
                     tabIndex={4}
-                />
-            </div>
-
-            <div className="form-field">
-                <label htmlFor="address">Address</label>
-                <input
-                    type="address"
-                    id="address"
-                    name="address"
-                    defaultValue={data.address}
-                    tabIndex={5}
                 />
             </div>
 
