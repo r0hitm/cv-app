@@ -91,35 +91,50 @@ function App() {
                         <h2>{personalInfo.title}</h2>
                     </section>
 
-                    <section className="cv-section">
-                        <address>{personalInfo.address}</address>
-                        <a
-                            className="email"
-                            href={`mailto:${personalInfo.email}`}
-                        >
-                            {personalInfo.email}
-                        </a>
-                        <a className="phone" href={`tel:${personalInfo.phone}`}>
-                            {personalInfo.phone}
-                        </a>
-                    </section>
+                    {personalInfo.email ||
+                    personalInfo.phone ||
+                    personalInfo.address ? (
+                        <section className="cv-section">
+                            <address>{personalInfo.address}</address>
+                            <a
+                                className="email"
+                                href={`mailto:${personalInfo.email}`}
+                            >
+                                {personalInfo.email}
+                            </a>
+                            <a
+                                className="phone"
+                                href={`tel:${personalInfo.phone}`}
+                            >
+                                {personalInfo.phone}
+                            </a>
+                        </section>
+                    ) : null}
 
-                    <section className="cv-section">
-                        <Experience data={experiences} />
-                    </section>
+                    {personalInfo.skills && (
+                        <section className="cv-section">
+                            <h3>Skills</h3>
+                            <p>{personalInfo.skills}</p>
+                        </section>
+                    )}
 
-                    <section className="cv-section">
-                        <Education data={education} />
-                    </section>
+                    {experiences.length > 0 && (
+                        <section className="cv-section">
+                            <Experience data={experiences} />
+                        </section>
+                    )}
 
-                    <section className="cv-section">
-                        <Project data={projects} />
-                    </section>
+                    {education.length > 0 && (
+                        <section className="cv-section">
+                            <Education data={education} />
+                        </section>
+                    )}
 
-                    <section className="cv-section">
-                        <h3>Skills</h3>
-                        <p>{personalInfo.skills}</p>
-                    </section>
+                    {projects.length > 0 && (
+                        <section className="cv-section">
+                            <Project data={projects} />
+                        </section>
+                    )}
 
                     <EditToggleBtn
                         editMode={editMode}
