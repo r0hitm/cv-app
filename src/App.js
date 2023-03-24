@@ -95,6 +95,24 @@ function App() {
         console.log("oldEditMode was: ", oldEditMode);
     }
 
+    function removeExperience(index) {
+        const newData = { ...data };
+        newData.experiences.splice(index, 1);
+        setData(newData);
+    }
+
+    function removeEducation(index) {
+        const newData = { ...data };
+        newData.education.splice(index, 1);
+        setData(newData);
+    }
+
+    function removeProject(index) {
+        const newData = { ...data };
+        newData.projects.splice(index, 1);
+        setData(newData);
+    }
+
     if (editMode) {
         return (
             <div className="App">
@@ -102,6 +120,9 @@ function App() {
                     data={data}
                     updateData={updateData}
                     toggleEditMode={toggleEditMode}
+                    eduDelete={removeEducation}
+                    expDelete={removeExperience}
+                    projDelete={removeProject}
                 />
                 <EditToggleBtn
                     editMode={editMode}

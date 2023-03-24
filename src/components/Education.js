@@ -1,4 +1,6 @@
-export default function Education({ data }) {
+import DeleteItemBtn from "./DeleteItemBtn.js";
+
+export default function Education({ data, handleDelete }) {
     return (
         <>
             {data.map((education, index) => {
@@ -9,6 +11,7 @@ export default function Education({ data }) {
                         <p>
                             {education.startDate} - {education.endDate}
                         </p>
+                        {handleDelete && <DeleteItemBtn index={index} onDelete={handleDelete} />}
                     </div>
                 );
             })}

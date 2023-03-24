@@ -1,4 +1,6 @@
-export default function Experience({ data }) {
+import DeleteItemBtn from "./DeleteItemBtn.js";
+
+export default function Experience({ data, handleDelete }) {
     return (
         <>
             {data.map((experience, index) => {
@@ -10,6 +12,7 @@ export default function Experience({ data }) {
                             {experience.startDate} - {experience.endDate}
                         </p>
                         <p>{experience.description}</p>
+                        {handleDelete && <DeleteItemBtn index={index} onDelete={handleDelete} />}
                     </div>
                 );
             })}

@@ -7,7 +7,7 @@ import ExperienceForm from "./ExperienceForm.js";
 import EducationForm from "./EducationForm.js";
 import ProjectForm from "./ProjectForm.js";
 
-export default function Form({ data, updateData, toggleEditMode }) {
+export default function Form({ data, updateData, toggleEditMode, expDelete, eduDelete, projDelete }) {
     const [experiences, setExperiences] = useState(data.experiences);
     const [education, setEducation] = useState(data.education);
     const [projects, setProjects] = useState(data.projects);
@@ -122,19 +122,19 @@ export default function Form({ data, updateData, toggleEditMode }) {
 
             <div className="form-field border">
                 <h3>Experience</h3>
-                <Experience data={experiences} />
+                <Experience data={experiences} handleDelete={expDelete} />
                 <ExperienceForm onAdd={addExperience} />
             </div>
 
             <div className="form-field border">
                 <h3>Education</h3>
-                <Education data={education} />
+                <Education data={education} handleDelete={eduDelete} />
                 <EducationForm onAdd={addEducation} />
             </div>
 
             <div className="form-field border">
                 <h3>Projects</h3>
-                <Project data={projects} />
+                <Project data={projects} handleDelete={projDelete} />
                 <ProjectForm onAdd={addProject} />
             </div>
         </>
