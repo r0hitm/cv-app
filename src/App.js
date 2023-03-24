@@ -20,7 +20,7 @@ function App() {
      * TODO: Add a function that takes an object and updates the data state
      */
     function updateData() {
-      console.log("updateData() called");
+        console.log("updateData() called");
     }
 
     /**
@@ -43,7 +43,46 @@ function App() {
             </div>
         );
     } else {
-        return <div className="App">To implement the view mode</div>;
+        return (
+            <div className="App">
+                <div className="cv-view">
+                    <section className="cv-section">
+                        <h1>{data.name}</h1>
+                        <h2>{data.title}</h2>
+                    </section>
+
+                    <section className="cv-section">
+                        <address>{data.address}</address>
+                        <email>{data.email}</email>
+                        <phone>{data.phone}</phone>
+                    </section>
+
+                    <section className="cv-section">
+                        <h3>Experience</h3>
+                        <p>TODO</p>
+                    </section>
+
+                    <section className="cv-section">
+                        <h3>Education</h3>
+                        <p>TODO</p>
+                    </section>
+
+                    <section className="cv-section">
+                        <h3>Projects</h3>
+                        <p>TODO</p>
+                    </section>
+
+                    <section className="cv-section">
+                        <h3>Skills</h3>
+                        <p>TODO</p>
+                    </section>
+
+                    {/* <section className="cv-section"> */}
+                    <button onClick={toggleEditMode}>Edit</button>
+                    {/* </section> */}
+                </div>
+            </div>
+        );
     }
 }
 

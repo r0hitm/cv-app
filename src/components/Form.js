@@ -1,27 +1,49 @@
 export default function Form({ data, updateData, toggleEditMode }) {
     return (
-        <div className="form" onSubmit={updateData}>
-            {/* <h1>Personal Information</h1> */}
-            <form>
+        <form id="cv-edit-form" onSubmit={handleSubmit}>
+            <div className="form-field">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" value={data.name} />
+                <input type="text" id="name" name="name" value={data.name} />
+            </div>
 
+            <div className="form-field">
                 <label htmlFor="title">Title</label>
-                <input type="text" id="title" value={data.title} />
+                <input type="text" id="title" name="title" value={data.title} />
+            </div>
 
+            <div className="form-field">
                 <label htmlFor="email">Email</label>
-                <input type="text" id="email" value={data.email} />
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={data.email}
+                />
+            </div>
 
+            <div className="form-field">
                 <label htmlFor="phone">Phone</label>
-                <input type="text" id="phone" value={data.phone} />
+                <input type="tel" id="phone" name="phone" value={data.phone} />
+            </div>
 
+            <div className="form-field">
                 <label htmlFor="address">Address</label>
-                <input type="text" id="address" value={data.address} />
+                <input
+                    type="address"
+                    id="address"
+                    name="adress"
+                    value={data.address}
+                />
+            </div>
 
-                <button type="submit" onClick={toggleEditMode}> {/* TODO */}
-                    "Save"
-                </button>
-            </form>
-        </div>
+            <div className="form-field">
+                <button type="submit">Save</button>
+            </div>
+        </form>
     );
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    console.log("handleSubmit() called");
 }
