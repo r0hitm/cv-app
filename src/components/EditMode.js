@@ -113,19 +113,16 @@ export default function EditMode({
             </form>
 
             <div className="form-field border">
-                <h3>Experience</h3>
                 <Experience data={experiences} handleDelete={expDelete} />
                 <ExperienceForm onAdd={updateExperiences} />
             </div>
 
             <div className="form-field border">
-                <h3>Education</h3>
                 <Education data={education} handleDelete={eduDelete} />
                 <EducationForm onAdd={updateEducation} />
             </div>
 
             <div className="form-field border">
-                <h3>Projects</h3>
                 <Project data={projects} handleDelete={projDelete} />
                 <ProjectForm onAdd={updateProjects} />
             </div>

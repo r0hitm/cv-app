@@ -3,6 +3,7 @@ import DeleteItemBtn from "./DeleteItemBtn.js";
 export default function Experience({ data, handleDelete }) {
     return (
         <>
+            <h3>Experience</h3>
             {data.map((experience, index) => {
                 return (
                     <div className="list-item" key={index}>
@@ -12,7 +13,12 @@ export default function Experience({ data, handleDelete }) {
                             {experience.startDate} - {experience.endDate}
                         </p>
                         <p>{experience.description}</p>
-                        {handleDelete && <DeleteItemBtn index={index} onDelete={handleDelete} />}
+                        {handleDelete && (
+                            <DeleteItemBtn
+                                index={index}
+                                onDelete={handleDelete}
+                            />
+                        )}
                     </div>
                 );
             })}

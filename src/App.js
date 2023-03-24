@@ -93,7 +93,10 @@ function App() {
 
                     <section className="cv-section">
                         <address>{personalInfo.address}</address>
-                        <a className="email" href={`mailto:${personalInfo.email}`}>
+                        <a
+                            className="email"
+                            href={`mailto:${personalInfo.email}`}
+                        >
                             {personalInfo.email}
                         </a>
                         <a className="phone" href={`tel:${personalInfo.phone}`}>
@@ -102,17 +105,14 @@ function App() {
                     </section>
 
                     <section className="cv-section">
-                        <h3>Experience</h3>
                         <Experience data={experiences} />
                     </section>
 
                     <section className="cv-section">
-                        <h3>Education</h3>
                         <Education data={education} />
                     </section>
 
                     <section className="cv-section">
-                        <h3>Projects</h3>
                         <Project data={projects} />
                     </section>
 
