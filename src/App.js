@@ -10,47 +10,61 @@ import EditToggleBtn from "./components/EditToggleBtn.js";
 import dummyCVData from "./dummyCVData.json";
 
 function App() {
-    const [personalInfo, setPersonalData] = useState(dummyCVData.personalInfo);
-    const [experiences, setExperiences] = useState(dummyCVData.experiences);
-    const [education, setEducation] = useState(dummyCVData.education);
-    const [projects, setProjects] = useState(dummyCVData.projects);
+    const [personalInfo, setPersonalData] = useState(loadFromLocalStorage("personalInfo") || dummyCVData.personalInfo);
+    const [experiences, setExperiences] = useState(loadFromLocalStorage("experiences") || dummyCVData.experiences);
+    const [education, setEducation] = useState(loadFromLocalStorage("education") || dummyCVData.education);
+    const [projects, setProjects] = useState(loadFromLocalStorage("projects") || dummyCVData.projects);
     const [editMode, setEditMode] = useState(false);
 
     function updatePersonalInfo(newData) {
         setPersonalData(newData);
+
+        saveToLocalStorage("personalInfo", newData);
     }
 
     function updateExperiences(newExperience) {
         const newExperiences = [...experiences, newExperience];
         setExperiences(newExperiences);
+
+        saveToLocalStorage("experiences", newExperiences);
     }
 
     function updateEducation(edu) {
         const newEducation = [...education, edu];
         setEducation(newEducation);
+
+        saveToLocalStorage("education", newEducation);
     }
 
     function updateProjects(newProject) {
         const newProjects = [...projects, newProject];
         setProjects(newProjects);
+
+        saveToLocalStorage("projects", newProjects);
     }
 
     function removeExperience(index) {
         const newData = [...experiences];
         newData.splice(index, 1);
         setExperiences(newData);
+
+        saveToLocalStorage("experiences", newData);
     }
 
     function removeEducation(index) {
         const newData = [...education];
         newData.splice(index, 1);
         setEducation(newData);
+
+        saveToLocalStorage("education", newData);
     }
 
     function removeProject(index) {
         const newData = [...projects];
         newData.splice(index, 1);
         setProjects(newData);
+
+        saveToLocalStorage("projects", newData);
     }
 
     function toggleEditMode() {
@@ -160,6 +174,18 @@ function TopMsg() {
             <p>View on <a href="https://github.com/r0hitm/cv-app">GitHub</a></p>
         </div>
     );
+}
+
+function saveToLocalStorage(name, data) {
+    console.log("saving to local storage");
+    console.log(name, data);
+    localStorage.setItem(name, JSON.stringify(data));
+}
+
+function loadFromLocalStorage(name) {
+    const data = localStorage.getItem(name);
+    if (data) return JSON.parse(data);
+    return null;
 }
 
 export default App;
